@@ -1,5 +1,3 @@
-import org.w3c.dom.ls.LSOutput;
-
 import java.nio.file.FileSystemNotFoundException;
 
 public class Deistvie {
@@ -36,12 +34,7 @@ public class Deistvie {
     String umnozh(String str []) {
         int chislo;
 //        System.out.println("massiv imnog: "+str[2]+"."+itog+"."+str[0]);
-        try {
-            chislo = Integer.parseInt(str[2]);
-            if (chislo < 0) {
-                System.out.println("Программа работает только с натуральными числами");
-                System.exit(0);
-            }
+        chislo = Integer.parseInt(str[2]);
             for (int i = 0; i < chislo; i++) {
                 if (i == 0) {
                     itog = str[0];
@@ -50,20 +43,13 @@ public class Deistvie {
                 }
                 //System.out.println(itog + " " + str[0]);
             }
-        } catch (NumberFormatException  e){
-            itog = "число не число";
-        }
         return itog;
     }
     String delen(String str[]){
         int chislo;
         try{
                 chislo = Integer.parseInt(str[2]);
-                if (chislo < 0) {
-                    System.out.println("Программа работает только с натуральными числами");
-                    System.exit(0);
-                }
-                for (int i=0;i<str[0].length()/chislo;i++) {
+                for (int i= 0; i< str[0].length()/chislo; i++) {
                 if (i == 0) {
                     //System.out.println("/////////////////////////////////////////"+str[0].charAt(0));
                     itog = String.valueOf(str[0].charAt(0));
@@ -73,6 +59,8 @@ public class Deistvie {
             }
         } catch(NumberFormatException  e){
             itog = "число не число";
+            System.exit(0);
+
         }
         return itog;
     }

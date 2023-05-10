@@ -1,15 +1,17 @@
 import java.util.Scanner;
 
 public class Main {
-    int a = 5;
     public static void main(String[] args) {
         String[] slova = new String[3];
-        System.out.println("Введите первое слогаемое в виде текста в двойных ковычках, через пробел знак действия и, через еще 1 пробел, слово в двойных ковычках или цифру");
+        System.out.println("Введите первый аргумент в виде текста в двойных ковычках, через пробел знак действия и, через еще 1 пробел, 2-й аргумент в двойных ковычках или цифру");
         Scanner scanner = new Scanner(System.in);
         String vvedyonText = scanner.nextLine();
-      //  String vvedyonText = "\"weqwe\" - \"qwe\"";
-       // String vvedyonText = "\"weqwe1\" / 654k";
-        scanner.close();
+       // String vvedyonText = "14 + \"qwe\"";
+       // String vvedyonText = "\"140\" + \"500\"";
+        //String vvedyonText = "\"weqwhjkhjke\" / 3";
+        //String vvedyonText = "\"weqwe1\" * 10";
+        //String vvedyonText = "\"weqwe1\" - \"qwe\"";
+        //scanner.close();
 
         int kolvo = 0;
         char [] charArray = vvedyonText.toCharArray();
@@ -20,22 +22,21 @@ public class Main {
         }
   //      System.out.println("!!!!!!!!!!! количество kovichek "+kolvo);
 
-        if ((kolvo == 2) || (kolvo==4)) {
+        Razbivka razb = new Razbivka();
+        slova = razb.razbivka(vvedyonText, kolvo);
+        //if slova[0]
+        /*for (String element: slova) {
+            System.out.println("rezult razbiv " + element);
+        }*/
 
-            Razbivka razb = new Razbivka();
-            slova = razb.razbivka(vvedyonText, kolvo);
 
-           /* for (String element: slova) {
-                System.out.println("rezult razbiv " + element);
-            }*/
-
-            Deistvie dei = new Deistvie();
-            vvedyonText=dei.deistv(slova);
-            System.out.println("Konechnii rezult: " + vvedyonText);
+        Deistvie dei = new Deistvie();
+        vvedyonText = dei.deistv(slova);
+        if (vvedyonText.length() > 40){
+            System.out.println("Konechnii rezult: " + vvedyonText.substring(0,39)+ "...");
         }
-        else {
-            System.out.println("Некорректный ввод");
-            //goto
+        else{
+            System.out.println("Konechnii rezult: " + vvedyonText);
         }
     }
 }
